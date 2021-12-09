@@ -170,3 +170,16 @@ def test_GetAsDisplaySegmentArray_FileExistsAndHasData_CorrectArrayReturned():
     fileName = "TestData/dayeight.csv"
     array = DataImporter.GetAsDisplaySegmentArray(fileName)
     assert (array == expectedArray)
+
+
+def test_GetAs2dArray_FileExistsAndHasData_CorrectArrayReturned():
+    expectedArray = testData = [
+    [2,1,9,9,9,4,3,2,1,0],
+    [3,9,8,7,8,9,4,9,2,1],
+    [9,8,5,6,7,8,9,8,9,2],
+    [8,7,6,7,8,9,6,7,8,9],
+    [9,8,9,9,9,6,5,6,7,8]
+    ]
+    fileName = "TestData/daynine.csv"
+    array = DataImporter.GetAs2dArray(fileName)
+    assert (array == expectedArray)

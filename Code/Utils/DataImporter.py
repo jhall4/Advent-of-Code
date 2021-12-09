@@ -102,4 +102,16 @@ def GetAsDisplaySegmentArray(fileName):
     return segments
     
     
-    # some different inputs | some outputs
+def GetAs2dArray(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+
+    lines = contents.split("\n")
+    for i in range(len(lines)):
+        lines[i] = list(map(int, list(lines[i])))
+    
+    return lines
