@@ -1,5 +1,6 @@
 
 import csv
+from typing import List
 import numpy
 import pathlib
 from os import path
@@ -77,3 +78,28 @@ def GetAsStartEndPointArray(fileName):
                 lines[i][j][k] = int(value)
 
     return lines
+
+signalValues = "signalValues"
+outputValue = "outputValue"
+
+def GetAsDisplaySegmentArray(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+
+    segments = []
+    lines = contents.split("\n")
+    for i in range(len(lines)):
+        line = lines[i].split(" | ")
+        segment = {}
+        segment[signalValues] = line[0].split(" ")
+        segment[outputValue] = line[1].split(" ")
+        segments.append(segment)
+
+    return segments
+    
+    
+    # some different inputs | some outputs
