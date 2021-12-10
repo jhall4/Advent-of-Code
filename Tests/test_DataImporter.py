@@ -53,6 +53,23 @@ def test_GetCsvRowsAsArray_FileExistsAndHasData_CorrectArrayReturned():
     array = DataImporter.GetCsvRowsAsArray(fileName)
     assert (array == expectedArray)
 
+def test_GetCsvRowsAsArray_DayTenFile_CorrectArrayReturned():
+    expectedArray = [
+        r"[({(<(())[]>[[{[]{<()<>>",
+        r"[(()[<>])]({[<{<<[]>>(",
+        r"{([(<{}[<>[]}>{[]{[(<()>",
+        r"(((({<>}<{<{<>}{[]{[]{}",
+        r"[[<[([]))<([[{}[[()]]]",
+        r"[{[{({}]{}}([{[{{{}}([]",
+        r"{<[[]]>}<{[{[{[]{()[[[]",
+        r"[<(<(<(<{}))><([]([]()",
+        r"<{([([[(<>()){}]>(<<{{",
+        r"<{([{{}}[<[[[<>{}]]]>[]]"
+    ]
+    fileName = "TestData/dayten.csv"
+    array = DataImporter.GetCsvRowsAsArray(fileName)
+    assert (array == expectedArray)
+
 
 ##### GetCsvAsArray #####
 
