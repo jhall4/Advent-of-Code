@@ -1,5 +1,5 @@
 from Utils import DataImporter
-import sys
+
 
 
 def PartOne(data):

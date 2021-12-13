@@ -69,6 +69,19 @@ def test_GetCsvRowsAsArray_DayTenFile_CorrectArrayReturned():
     fileName = "TestData/dayten.csv"
     array = DataImporter.GetCsvRowsAsArray(fileName)
     assert (array == expectedArray)
+def test_GetCsvRowsAsArray_DatTwelveFile_CorrectArrayReturned():
+    expectedArray = [
+    'start-A',
+    'start-b',
+    'A-c',
+    'A-b',
+    'b-d',
+    'A-end',
+    'b-end',
+    ]
+    fileName = "TestData/daytwelve.csv"
+    array = DataImporter.GetCsvRowsAsArray(fileName)
+    assert (array == expectedArray)
 
 
 ##### GetCsvAsArray #####
