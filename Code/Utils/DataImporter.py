@@ -115,3 +115,29 @@ def GetAs2dArray(fileName):
         lines[i] = list(map(int, list(lines[i])))
     
     return lines
+
+
+def GetAsPointsAndFolds(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+
+    sections = contents.split("\n\n")
+    points = sections[0].split("\n")
+    folds = sections[1].split("\n")
+
+    for i, point in enumerate(points):
+        points[i] = numpy.fromstring(point, dtype=int, sep=',').tolist()
+
+    unneededInfo = 'fold along '
+    for i, fold in enumerate(folds):
+        fold = fold.replace(unneededInfo, '')
+        fold = fold.split("=")
+        fold[1] = int(fold[1])
+        folds[i] = fold
+
+    return points, folds
+

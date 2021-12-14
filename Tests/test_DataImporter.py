@@ -215,7 +215,7 @@ def test_GetAs2dArray_FileExistsAndHasData_CorrectArrayReturned():
     assert (array == expectedArray)
 
 def test_GetAs2dArray_DayElevenFile_CorrectArrayReturned():
-    expectedArray = testData = [
+    expectedArray = [
         [5,4,8,3,1,4,3,2,2,3],
         [2,7,4,5,8,5,4,7,1,1],
         [5,2,6,4,5,5,6,1,7,3],
@@ -230,3 +230,38 @@ def test_GetAs2dArray_DayElevenFile_CorrectArrayReturned():
     fileName = "TestData/dayeleven.csv"
     array = DataImporter.GetAs2dArray(fileName)
     assert (array == expectedArray)
+
+
+    ##### GetAsPointsAndFolds #####
+
+
+def test_GetAsPointsAndFolds_DayThirteenFile_CorrectArrayReturned():
+    expectedPoints = [
+        [6,10],
+        [0,14],
+        [9,10],
+        [0,3],
+        [10,4],
+        [4,11],
+        [6,0],
+        [6,12],
+        [4,1],
+        [0,13],
+        [10,12],
+        [3,4],
+        [3,0],
+        [8,4],
+        [1,10],
+        [2,14],
+        [8,10],
+        [9,0]
+    ]
+    expectedFolds = [
+        ['y',7],
+        ['x',5]
+    ]
+
+    fileName = "TestData/daythirteen.csv"
+    points, folds = DataImporter.GetAsPointsAndFolds(fileName)
+    assert points == expectedPoints
+    assert folds == expectedFolds
