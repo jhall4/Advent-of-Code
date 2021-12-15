@@ -141,3 +141,23 @@ def GetAsPointsAndFolds(fileName):
 
     return points, folds
 
+
+def GetAsStringAndDict(fileName):
+    string = ""
+    dict = {}
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+    sections = contents.split('\n\n')
+
+    string = sections[0]
+    entries = sections[1].split('\n')
+
+    for entry in entries:
+        (key, val) = entry.split(' -> ')
+        dict[key] = val
+    
+    return string, dict

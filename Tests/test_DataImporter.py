@@ -265,3 +265,31 @@ def test_GetAsPointsAndFolds_DayThirteenFile_CorrectArrayReturned():
     points, folds = DataImporter.GetAsPointsAndFolds(fileName)
     assert points == expectedPoints
     assert folds == expectedFolds
+
+
+##### GetAsStringAndDict #####
+
+def test_GetAsStringAndDict_DayFourteenFile_CorrectValuesReturned():
+    expectedString = 'NNCB'
+    expectedDict = {
+        'CH' : 'B',
+        'HH' : 'N',
+        'CB' : 'H',
+        'NH' : 'C',
+        'HB' : 'C',
+        'HC' : 'B',
+        'HN' : 'C',
+        'NN' : 'C',
+        'BH' : 'H',
+        'NC' : 'B',
+        'NB' : 'B',
+        'BN' : 'B',
+        'BB' : 'N',
+        'BC' : 'B',
+        'CC' : 'N',
+        'CN' : 'C'
+    }
+    fileName = "TestData/dayfourteen.csv"
+    string, dict = DataImporter.GetAsStringAndDict(fileName)
+    assert string == expectedString
+    assert dict == expectedDict
