@@ -142,6 +142,16 @@ def GetAsPointsAndFolds(fileName):
     return points, folds
 
 
+def GetAsString(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+    return contents
+
+
 def GetAsStringAndDict(fileName):
     string = ""
     dict = {}
