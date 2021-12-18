@@ -311,3 +311,46 @@ def test_GetAsStringAndDict_DayFourteenFile_CorrectValuesReturned():
     string, dict = DataImporter.GetAsStringAndDict(fileName)
     assert string == expectedString
     assert dict == expectedDict
+
+
+    ##### GetStringBetween #####
+
+def test_GetStringBetween_IsNotString_EmptyStringReturned():
+    string, left, right = 1,2,3
+    assert DataImporter.GetStringBetween(string, left, right) == ""
+
+
+def test_GetStringBetween_LeftNotInStringRightIs_StringUpToRightReturned():
+    expected = 'hello th'
+    left = 'test'
+    right = 'ere'
+    string = expected + right
+    assert DataImporter.GetStringBetween(string, left, right) == expected
+
+
+def test_GetStringBetween_LeftInStringRightNot_StringLeftToEndReturned():
+    expected = 'lo there'
+    left = 'hel'
+    right = 'test'
+    string = left + expected
+    assert DataImporter.GetStringBetween(string, left, right) == expected
+
+
+def test_GetStringBetween_NeitherInString_EmptyStringReturned():
+    left = 'test'
+    right = 'test'
+    string = 'hello there'
+    assert DataImporter.GetStringBetween(string, left, right) == ''
+
+
+##### GetAsRect #####
+
+
+def test_GetAsRect_DaySeventeenFile():
+    expectedRect = {
+        'topLeft':{'x':20,'y':-5},
+        'bottomRight':{'x':30,'y':-10}
+    }
+    fileName = "TestData/dayseventeen.csv"
+    rect = DataImporter.GetAsRect(fileName)
+    assert rect == expectedRect

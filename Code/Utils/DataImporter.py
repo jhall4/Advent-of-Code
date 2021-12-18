@@ -6,9 +6,11 @@ import pathlib
 from os import path
 from os.path import exists
 
+
 def GetPathOnDisk(fileName):
     path = pathlib.Path(__file__).parent.parent.parent / "Data" / fileName
     return path
+
 
 def GetNumbersFromString(string):
     if not isinstance(string, str):
@@ -17,32 +19,35 @@ def GetNumbersFromString(string):
     numbers = [int(i) for i in string.split() if i.isdigit()]
     return numbers
 
+
 def GetCsvRowsAsArray(fileName):
     path = GetPathOnDisk(fileName)
     if(not exists(path)):
         return []
-    
+
     with open(path) as file:
         contents = file.read()
 
     return list(contents.split("\n"))
 
+
 def GetCsvAsArray(fileName):
     path = GetPathOnDisk(fileName)
     if(not exists(path)):
         return []
-    
+
     with open(path) as file:
         array = numpy.loadtxt(file, delimiter=",", dtype=int)
 
     return array.flatten().tolist()
 
+
 def GetCsvAs3dArray(fileName):
     path = GetPathOnDisk(fileName)
     if(not exists(path)):
         return []
-        
-    with open(path , newline='') as file:
+
+    with open(path, newline='') as file:
         contents = file.read()
 
     topLevel = contents.split("\n\n")
@@ -58,14 +63,15 @@ def GetCsvAs3dArray(fileName):
 
     return topLevel
 
+
 def GetAsStartEndPointArray(fileName):
-    path= GetPathOnDisk(fileName)
+    path = GetPathOnDisk(fileName)
     if(not exists(path)):
         return []
 
     with open(path) as file:
         contents = file.read()
-    
+
     lines = contents.split("\n")
     for i in range(len(lines)):
         line = lines[i].split(" -> ")
@@ -79,8 +85,10 @@ def GetAsStartEndPointArray(fileName):
 
     return lines
 
+
 signalValues = "signalValues"
 outputValue = "outputValue"
+
 
 def GetAsDisplaySegmentArray(fileName):
     path = GetPathOnDisk(fileName)
@@ -100,8 +108,8 @@ def GetAsDisplaySegmentArray(fileName):
         segments.append(segment)
 
     return segments
-    
-    
+
+
 def GetAs2dArray(fileName):
     path = GetPathOnDisk(fileName)
     if(not exists(path)):
@@ -113,7 +121,7 @@ def GetAs2dArray(fileName):
     lines = contents.split("\n")
     for i in range(len(lines)):
         lines[i] = list(map(int, list(lines[i])))
-    
+
     return lines
 
 
@@ -169,5 +177,45 @@ def GetAsStringAndDict(fileName):
     for entry in entries:
         (key, val) = entry.split(' -> ')
         dict[key] = val
-    
+
     return string, dict
+
+
+def GetStringBetween(string, left='', right=''):
+    if not isinstance(string, str) or not isinstance(left, str) or not isinstance(right, str):
+        return ""
+    if left not in string and right not in string:
+        return ""
+    leftSearch = 0
+    if left != '' and left in string:
+        leftSearch = string.index(left)+len(left)
+    rightSearch = len(string)
+    if right != '' and right in string:
+        rightSearch = string.index(right)
+    return string[leftSearch:rightSearch]
+
+
+topLeft = 'topLeft'
+bottomRight = 'bottomRight'
+
+
+def GetAsRect(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+
+    findX = 'x='
+    findY = 'y='
+    xStr = GetStringBetween(contents, findX, ',')
+    yStr = GetStringBetween(contents, findY)
+    xs = xStr.split('..')
+    ys = yStr.split('..')
+
+    rect = {}
+    rect[topLeft] = {'x': int(xs[0]), 'y': int(ys[1])}
+    rect[bottomRight] = {'x': int(xs[1]), 'y': int(ys[0])}
+
+    return rect
