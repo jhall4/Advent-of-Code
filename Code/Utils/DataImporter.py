@@ -5,6 +5,7 @@ import numpy
 import pathlib
 from os import path
 from os.path import exists
+import json
 
 
 def GetPathOnDisk(fileName):
@@ -219,3 +220,18 @@ def GetAsRect(fileName):
     rect[bottomRight] = {'x': int(xs[1]), 'y': int(ys[0])}
 
     return rect
+
+
+def GetAsList(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+
+    lines = contents.split('\n')
+    list = []
+    for line in lines:
+        list.append(json.loads(line))
+    return list

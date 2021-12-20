@@ -53,6 +53,7 @@ def test_GetCsvRowsAsArray_FileExistsAndHasData_CorrectArrayReturned():
     array = DataImporter.GetCsvRowsAsArray(fileName)
     assert (array == expectedArray)
 
+
 def test_GetCsvRowsAsArray_DayTenFile_CorrectArrayReturned():
     expectedArray = [
         r"[({(<(())[]>[[{[]{<()<>>",
@@ -69,15 +70,17 @@ def test_GetCsvRowsAsArray_DayTenFile_CorrectArrayReturned():
     fileName = "TestData/dayten.csv"
     array = DataImporter.GetCsvRowsAsArray(fileName)
     assert (array == expectedArray)
+
+
 def test_GetCsvRowsAsArray_DatTwelveFile_CorrectArrayReturned():
     expectedArray = [
-    'start-A',
-    'start-b',
-    'A-c',
-    'A-b',
-    'b-d',
-    'A-end',
-    'b-end',
+        'start-A',
+        'start-b',
+        'A-c',
+        'A-b',
+        'b-d',
+        'A-end',
+        'b-end',
     ]
     fileName = "TestData/daytwelve.csv"
     array = DataImporter.GetCsvRowsAsArray(fileName)
@@ -100,7 +103,8 @@ def test_GetCsvAsArray_FileExistsAndHasData_ValidArrayReturned():
 
 
 def test_GetCsvAsArray_FileExistsAndHasData_CorrectArrayReturned():
-    expectedArray = [7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1]
+    expectedArray = [7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24,
+                     10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1]
     fileName = "TestData/dayfour_calls.csv"
     array = DataImporter.GetCsvAsArray(fileName)
     assert (array == expectedArray)
@@ -124,25 +128,25 @@ def test_GetCsvAs3dArray_FileExistsAndHasData_ValidArrayReturned():
 def test_GetCsvAs3dArray_FileExistsAndHasData_CorrectArrayReturned():
     expectedArray = [
         [
-            [22,13,17,11, 0],
-            [ 8, 2,23, 4,24],
-            [21, 9,14,16, 7],
-            [ 6,10, 3,18, 5],
-            [ 1,12,20,15,19]
+            [22, 13, 17, 11, 0],
+            [8, 2, 23, 4, 24],
+            [21, 9, 14, 16, 7],
+            [6, 10, 3, 18, 5],
+            [1, 12, 20, 15, 19]
         ],
         [
-            [3,15, 0, 2,22],
-            [ 9,18,13,17, 5],
-            [19, 8, 7,25,23],
-            [20,11,10,24, 4],
-            [14,21,16,12, 6]
+            [3, 15, 0, 2, 22],
+            [9, 18, 13, 17, 5],
+            [19, 8, 7, 25, 23],
+            [20, 11, 10, 24, 4],
+            [14, 21, 16, 12, 6]
         ],
         [
-            [14,21,17,24, 4],
-            [10,16,15, 9,19],
-            [18, 8,23,26,20],
-            [22,11,13, 6, 5],
-            [ 2, 0,12, 3, 7]
+            [14, 21, 17, 24, 4],
+            [10, 16, 15, 9, 19],
+            [18, 8, 23, 26, 20],
+            [22, 11, 13, 6, 5],
+            [2, 0, 12, 3, 7]
         ]
     ]
 
@@ -183,18 +187,29 @@ def test_GetAsStartEndPointArray_FileExistsAndHasData_CorrectArrayReturned():
     array = DataImporter.GetAsStartEndPointArray(fileName)
     assert (array == expectedArray)
 
+
 def test_GetAsDisplaySegmentArray_FileExistsAndHasData_CorrectArrayReturned():
     expectedArray = [
-        {DataImporter.signalValues : ["be","cfbegad","cbdgef","fgaecd","cgeb","fdcge","agebfd","fecdb","fabcd","edb"], DataImporter.outputValue : ["fdgacbe","cefdb","cefbgd","gcbe"]},
-        {DataImporter.signalValues : ["edbfga","begcd","cbg","gc","gcadebf","fbgde","acbgfd","abcde","gfcbed","gfec"], DataImporter.outputValue : ["fcgedb","cgb","dgebacf","gc"]},
-        {DataImporter.signalValues : ["fgaebd","cg","bdaec","gdafb","agbcfd","gdcbef","bgcad","gfac","gcb","cdgabef"], DataImporter.outputValue : ["cg","cg","fdcagb","cbg"]},
-        {DataImporter.signalValues : ["fbegcd","cbd","adcefb","dageb","afcb","bc","aefdc","ecdab","fgdeca","fcdbega"], DataImporter.outputValue : ["efabcd","cedba","gadfec","cb"]},
-        {DataImporter.signalValues : ["aecbfdg","fbg","gf","bafeg","dbefa","fcge","gcbea","fcaegb","dgceab","fcbdga"], DataImporter.outputValue : ["gecf","egdcabf","bgf","bfgea"]},
-        {DataImporter.signalValues : ["fgeab","ca","afcebg","bdacfeg","cfaedg","gcfdb","baec","bfadeg","bafgc","acf"], DataImporter.outputValue : ["gebdcfa","ecba","ca","fadegcb"]},
-        {DataImporter.signalValues : ["dbcfg","fgd","bdegcaf","fgec","aegbdf","ecdfab","fbedc","dacgb","gdcebf","gf"], DataImporter.outputValue : ["cefg","dcbef","fcge","gbcadfe"]},
-        {DataImporter.signalValues : ["bdfegc","cbegaf","gecbf","dfcage","bdacg","ed","bedf","ced","adcbefg","gebcd"], DataImporter.outputValue : ["ed","bcgafe","cdgba","cbgef"]},
-        {DataImporter.signalValues : ["egadfb","cdbfeg","cegd","fecab","cgb","gbdefca","cg","fgcdab","egfdb","bfceg"], DataImporter.outputValue : ["gbdfcae","bgc","cg","cgb"]},
-        {DataImporter.signalValues : ["gcafb","gcf","dcaebfg","ecagb","gf","abcdeg","gaef","cafbge","fdbac","fegbdc"], DataImporter.outputValue : ["fgae","cfgab","fg","bagce"]}
+        {DataImporter.signalValues: ["be", "cfbegad", "cbdgef", "fgaecd", "cgeb", "fdcge", "agebfd",
+                                     "fecdb", "fabcd", "edb"], DataImporter.outputValue: ["fdgacbe", "cefdb", "cefbgd", "gcbe"]},
+        {DataImporter.signalValues: ["edbfga", "begcd", "cbg", "gc", "gcadebf", "fbgde", "acbgfd",
+                                     "abcde", "gfcbed", "gfec"], DataImporter.outputValue: ["fcgedb", "cgb", "dgebacf", "gc"]},
+        {DataImporter.signalValues: ["fgaebd", "cg", "bdaec", "gdafb", "agbcfd", "gdcbef", "bgcad",
+                                     "gfac", "gcb", "cdgabef"], DataImporter.outputValue: ["cg", "cg", "fdcagb", "cbg"]},
+        {DataImporter.signalValues: ["fbegcd", "cbd", "adcefb", "dageb", "afcb", "bc", "aefdc",
+                                     "ecdab", "fgdeca", "fcdbega"], DataImporter.outputValue: ["efabcd", "cedba", "gadfec", "cb"]},
+        {DataImporter.signalValues: ["aecbfdg", "fbg", "gf", "bafeg", "dbefa", "fcge", "gcbea",
+                                     "fcaegb", "dgceab", "fcbdga"], DataImporter.outputValue: ["gecf", "egdcabf", "bgf", "bfgea"]},
+        {DataImporter.signalValues: ["fgeab", "ca", "afcebg", "bdacfeg", "cfaedg", "gcfdb", "baec",
+                                     "bfadeg", "bafgc", "acf"], DataImporter.outputValue: ["gebdcfa", "ecba", "ca", "fadegcb"]},
+        {DataImporter.signalValues: ["dbcfg", "fgd", "bdegcaf", "fgec", "aegbdf", "ecdfab", "fbedc",
+                                     "dacgb", "gdcebf", "gf"], DataImporter.outputValue: ["cefg", "dcbef", "fcge", "gbcadfe"]},
+        {DataImporter.signalValues: ["bdfegc", "cbegaf", "gecbf", "dfcage", "bdacg", "ed", "bedf",
+                                     "ced", "adcbefg", "gebcd"], DataImporter.outputValue: ["ed", "bcgafe", "cdgba", "cbgef"]},
+        {DataImporter.signalValues: ["egadfb", "cdbfeg", "cegd", "fecab", "cgb", "gbdefca", "cg",
+                                     "fgcdab", "egfdb", "bfceg"], DataImporter.outputValue: ["gbdfcae", "bgc", "cg", "cgb"]},
+        {DataImporter.signalValues: ["gcafb", "gcf", "dcaebfg", "ecagb", "gf", "abcdeg", "gaef",
+                                     "cafbge", "fdbac", "fegbdc"], DataImporter.outputValue: ["fgae", "cfgab", "fg", "bagce"]}
 
     ]
     fileName = "TestData/dayeight.csv"
@@ -204,28 +219,29 @@ def test_GetAsDisplaySegmentArray_FileExistsAndHasData_CorrectArrayReturned():
 
 def test_GetAs2dArray_FileExistsAndHasData_CorrectArrayReturned():
     expectedArray = testData = [
-    [2,1,9,9,9,4,3,2,1,0],
-    [3,9,8,7,8,9,4,9,2,1],
-    [9,8,5,6,7,8,9,8,9,2],
-    [8,7,6,7,8,9,6,7,8,9],
-    [9,8,9,9,9,6,5,6,7,8]
+        [2, 1, 9, 9, 9, 4, 3, 2, 1, 0],
+        [3, 9, 8, 7, 8, 9, 4, 9, 2, 1],
+        [9, 8, 5, 6, 7, 8, 9, 8, 9, 2],
+        [8, 7, 6, 7, 8, 9, 6, 7, 8, 9],
+        [9, 8, 9, 9, 9, 6, 5, 6, 7, 8]
     ]
     fileName = "TestData/daynine.csv"
     array = DataImporter.GetAs2dArray(fileName)
     assert (array == expectedArray)
 
+
 def test_GetAs2dArray_DayElevenFile_CorrectArrayReturned():
     expectedArray = [
-        [5,4,8,3,1,4,3,2,2,3],
-        [2,7,4,5,8,5,4,7,1,1],
-        [5,2,6,4,5,5,6,1,7,3],
-        [6,1,4,1,3,3,6,1,4,6],
-        [6,3,5,7,3,8,5,4,7,8],
-        [4,1,6,7,5,2,4,6,4,5],
-        [2,1,7,6,8,4,1,7,2,1],
-        [6,8,8,2,8,8,1,1,3,4],
-        [4,8,4,6,8,4,8,5,5,4],
-        [5,2,8,3,7,5,1,5,2,6]
+        [5, 4, 8, 3, 1, 4, 3, 2, 2, 3],
+        [2, 7, 4, 5, 8, 5, 4, 7, 1, 1],
+        [5, 2, 6, 4, 5, 5, 6, 1, 7, 3],
+        [6, 1, 4, 1, 3, 3, 6, 1, 4, 6],
+        [6, 3, 5, 7, 3, 8, 5, 4, 7, 8],
+        [4, 1, 6, 7, 5, 2, 4, 6, 4, 5],
+        [2, 1, 7, 6, 8, 4, 1, 7, 2, 1],
+        [6, 8, 8, 2, 8, 8, 1, 1, 3, 4],
+        [4, 8, 4, 6, 8, 4, 8, 5, 5, 4],
+        [5, 2, 8, 3, 7, 5, 1, 5, 2, 6]
     ]
     fileName = "TestData/dayeleven.csv"
     array = DataImporter.GetAs2dArray(fileName)
@@ -234,49 +250,48 @@ def test_GetAs2dArray_DayElevenFile_CorrectArrayReturned():
 
 def test_GetAs2dArray_DayFifteenFile_CorrectArrayReturned():
     expectedArray = [
-        [1,1,6,3,7,5,1,7,4,2],
-        [1,3,8,1,3,7,3,6,7,2],
-        [2,1,3,6,5,1,1,3,2,8],
-        [3,6,9,4,9,3,1,5,6,9],
-        [7,4,6,3,4,1,7,1,1,1],
-        [1,3,1,9,1,2,8,1,3,7],
-        [1,3,5,9,9,1,2,4,2,1],
-        [3,1,2,5,4,2,1,6,3,9],
-        [1,2,9,3,1,3,8,5,2,1],
-        [2,3,1,1,9,4,4,5,8,1]
+        [1, 1, 6, 3, 7, 5, 1, 7, 4, 2],
+        [1, 3, 8, 1, 3, 7, 3, 6, 7, 2],
+        [2, 1, 3, 6, 5, 1, 1, 3, 2, 8],
+        [3, 6, 9, 4, 9, 3, 1, 5, 6, 9],
+        [7, 4, 6, 3, 4, 1, 7, 1, 1, 1],
+        [1, 3, 1, 9, 1, 2, 8, 1, 3, 7],
+        [1, 3, 5, 9, 9, 1, 2, 4, 2, 1],
+        [3, 1, 2, 5, 4, 2, 1, 6, 3, 9],
+        [1, 2, 9, 3, 1, 3, 8, 5, 2, 1],
+        [2, 3, 1, 1, 9, 4, 4, 5, 8, 1]
     ]
     fileName = "TestData/dayfifteen.csv"
     array = DataImporter.GetAs2dArray(fileName)
     assert (array == expectedArray)
-
 
     ##### GetAsPointsAndFolds #####
 
 
 def test_GetAsPointsAndFolds_DayThirteenFile_CorrectArrayReturned():
     expectedPoints = [
-        [6,10],
-        [0,14],
-        [9,10],
-        [0,3],
-        [10,4],
-        [4,11],
-        [6,0],
-        [6,12],
-        [4,1],
-        [0,13],
-        [10,12],
-        [3,4],
-        [3,0],
-        [8,4],
-        [1,10],
-        [2,14],
-        [8,10],
-        [9,0]
+        [6, 10],
+        [0, 14],
+        [9, 10],
+        [0, 3],
+        [10, 4],
+        [4, 11],
+        [6, 0],
+        [6, 12],
+        [4, 1],
+        [0, 13],
+        [10, 12],
+        [3, 4],
+        [3, 0],
+        [8, 4],
+        [1, 10],
+        [2, 14],
+        [8, 10],
+        [9, 0]
     ]
     expectedFolds = [
-        ['y',7],
-        ['x',5]
+        ['y', 7],
+        ['x', 5]
     ]
 
     fileName = "TestData/daythirteen.csv"
@@ -290,33 +305,33 @@ def test_GetAsPointsAndFolds_DayThirteenFile_CorrectArrayReturned():
 def test_GetAsStringAndDict_DayFourteenFile_CorrectValuesReturned():
     expectedString = 'NNCB'
     expectedDict = {
-        'CH' : 'B',
-        'HH' : 'N',
-        'CB' : 'H',
-        'NH' : 'C',
-        'HB' : 'C',
-        'HC' : 'B',
-        'HN' : 'C',
-        'NN' : 'C',
-        'BH' : 'H',
-        'NC' : 'B',
-        'NB' : 'B',
-        'BN' : 'B',
-        'BB' : 'N',
-        'BC' : 'B',
-        'CC' : 'N',
-        'CN' : 'C'
+        'CH': 'B',
+        'HH': 'N',
+        'CB': 'H',
+        'NH': 'C',
+        'HB': 'C',
+        'HC': 'B',
+        'HN': 'C',
+        'NN': 'C',
+        'BH': 'H',
+        'NC': 'B',
+        'NB': 'B',
+        'BN': 'B',
+        'BB': 'N',
+        'BC': 'B',
+        'CC': 'N',
+        'CN': 'C'
     }
     fileName = "TestData/dayfourteen.csv"
     string, dict = DataImporter.GetAsStringAndDict(fileName)
     assert string == expectedString
     assert dict == expectedDict
 
-
     ##### GetStringBetween #####
 
+
 def test_GetStringBetween_IsNotString_EmptyStringReturned():
-    string, left, right = 1,2,3
+    string, left, right = 1, 2, 3
     assert DataImporter.GetStringBetween(string, left, right) == ""
 
 
@@ -348,9 +363,27 @@ def test_GetStringBetween_NeitherInString_EmptyStringReturned():
 
 def test_GetAsRect_DaySeventeenFile():
     expectedRect = {
-        'topLeft':{'x':20,'y':-5},
-        'bottomRight':{'x':30,'y':-10}
+        'topLeft': {'x': 20, 'y': -5},
+        'bottomRight': {'x': 30, 'y': -10}
     }
     fileName = "TestData/dayseventeen.csv"
     rect = DataImporter.GetAsRect(fileName)
     assert rect == expectedRect
+
+
+##### GetAsList #####
+
+def test_GetAsList_DayEighteenFile():
+    expectedList = [
+        [1, 2],
+        [[1, 2], 3],
+        [9, [8, 7]],
+        [[1, 9], [8, 5]],
+        [[[[1, 2], [3, 4]], [[5, 6], [7, 8]]], 9],
+        [[[9, [3, 8]], [[0, 9], 6]], [[[3, 7], [4, 9]], 3]],
+        [[[[1, 3], [5, 3]], [[1, 3], [8, 7]]], [
+            [[4, 9], [6, 9]], [[8, 2], [7, 3]]]]
+    ]
+    fileName = "TestData/dayeighteen.csv"
+    list = DataImporter.GetAsList(fileName)
+    assert list == expectedList
