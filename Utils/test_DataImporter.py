@@ -3,7 +3,8 @@
 #codeModulePath = pathlib.Path(__file__)
 #sys.path[0] = str(codeModulePath)
 
-import Utils.DataImporter as DataImporter
+#import Utils.DataImporter as DataImporter
+import DataImporter
 
 
 ##### GetNumbersFromString #####
@@ -417,4 +418,21 @@ def test_GetAs3dPointBeaconArray_DayNineteenSmallFile():
     ]
     fileName = "aoc2021/TestData/daynineteensmall.csv"
     list = DataImporter.GetAs3dPointBeaconArray(fileName)
+    assert list == expectedList
+
+
+##### GetNewLineDelimitedFileAs2dIntArray #####
+
+
+
+def test_GetNewLineDelimitedFileAs2dIntArray_Day1TestFile():
+    expectedList = [
+        [1000, 2000, 3000],
+        [4000],
+        [5000, 6000],
+        [7000, 8000, 9000],
+        [10000]
+    ]
+    fileName = "aoc2022/TestData/day1.txt"
+    list = DataImporter.GetNewLineDelimitedFileAs2dIntArray(fileName)
     assert list == expectedList

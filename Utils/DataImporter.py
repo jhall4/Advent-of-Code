@@ -1,4 +1,3 @@
-
 import csv
 from typing import List
 import numpy
@@ -271,3 +270,35 @@ def GetAs3dPointBeaconArray(fileName):
         currentScanner.append({'x': int(coords[0]), 'y': int(coords[1]), 'z': int(coords[2])})
     scanners.append(currentScanner)
     return scanners
+
+
+def GetNewLineDelimitedFileAs2dIntArray(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+    
+    #for item in calorie_list:
+    #    if item != "":
+    #        elf.append(int(item))
+    #    if item == "":
+    #        elves.append(elf)
+    #        elf = []
+    #return elves
+
+    lines = contents.split('\n')
+
+    topLevelArray = []
+    secondLevelArray = []
+    for line in lines:
+        if line != '':
+            secondLevelArray.append(int(line))
+        else:
+            topLevelArray.append(secondLevelArray)
+            secondLevelArray = []
+        
+    if len(secondLevelArray)>0:
+        topLevelArray.append(secondLevelArray)
+    return topLevelArray

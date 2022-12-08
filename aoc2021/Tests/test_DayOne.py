@@ -5,8 +5,6 @@ sys.path[0] = str(codeModulePath)
 
 from aoc2021.Code import DayOne
 
-import pytest
-
 testData = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
 
 
