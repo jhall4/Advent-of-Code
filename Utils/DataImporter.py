@@ -1,7 +1,9 @@
 import csv
 from typing import List
 import numpy
+import math
 import pathlib
+import string
 from os import path
 from os.path import exists
 import json
@@ -315,3 +317,38 @@ def GetNewLineDelimitedFileAs2dIntArray(fileName):
     if len(secondLevelArray)>0:
         topLevelArray.append(secondLevelArray)
     return topLevelArray
+
+
+def GetAsStacksAndMoves(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path) as file:
+        contents = file.read()
+    lines = contents.split('\n')
+
+    stacks = []
+    instructions = []
+
+    for line in lines:
+        if "[" in line:
+            for i in range(math.ceil(len(line)/4)):
+                start = i*4
+                end = min(start+4, len(line))
+                crate = line[start:end].strip()
+                if len(crate) > 0:
+                    while len(stacks) < i+1:
+                        stacks.append([])
+                    stacks[i].append(crate[1])
+        elif "move" in line:
+            instruction = [int(i) for i in line.split() if i.isdigit()]
+            instructions.append(instruction)
+
+
+    for i in range(len(stacks)):
+        stacks[i].reverse()
+    return stacks, instructions
+                
+            
+        

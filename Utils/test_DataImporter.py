@@ -436,3 +436,14 @@ def test_GetNewLineDelimitedFileAs2dIntArray_Day1TestFile():
     fileName = "aoc2022/TestData/day1.txt"
     list = DataImporter.GetNewLineDelimitedFileAs2dIntArray(fileName)
     assert list == expectedList
+
+
+##### GetAsStacksAndMoves #####
+
+
+def test_GetAsStacksAndMoves_Day5TestFile():
+    expectedStacks = [['Z', 'N'], ['M', 'C', 'D'], ['P']]
+    expectedInstructions = [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]]
+    fileName = "aoc2022/TestData/day5.txt"
+    stacks, instrustions = DataImporter.GetAsStacksAndMoves(fileName)
+    assert expectedStacks == stacks and expectedInstructions == instrustions
