@@ -32,14 +32,36 @@ def GetCsvRowsAsArray(fileName):
 
     return list(contents.split("\n"))
 
-def GetCsvRowsAsMultiDimensionalArray(filename, delim):
-    fileArray = GetCsvRowsAsArray(filename)
+def GetCsvRowsAsMultiDimensionalArray(fileName, delim):
+    fileArray = GetCsvRowsAsArray(fileName)
 
     for i in range(len(fileArray)):
         splitLine = fileArray[i].split(delim)
         fileArray[i] = splitLine
     
     return fileArray
+
+
+def GetAsMultiDimensionalArray(fileName, delim1, delim2, delim3):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return []
+
+    with open(path, newline='') as file:
+        contents = file.read()
+
+    topLevel = contents.split(delim1)
+    for i in range(len(topLevel)):
+        midLevel = topLevel[i].split(delim2)
+        topLevel[i] = midLevel
+        for j in range(len(midLevel)):
+            lowLevel = midLevel[j].split(delim3)
+            topLevel[i][j] = lowLevel
+            #for k in range(len(lowLevel)):
+            #    value = lowLevel[k]
+            #    topLevel[i][j][k] = value
+
+    return topLevel
 
 
 def GetCsvAsArray(fileName):
@@ -279,15 +301,6 @@ def GetNewLineDelimitedFileAs2dIntArray(fileName):
 
     with open(path) as file:
         contents = file.read()
-    
-    #for item in calorie_list:
-    #    if item != "":
-    #        elf.append(int(item))
-    #    if item == "":
-    #        elves.append(elf)
-    #        elf = []
-    #return elves
-
     lines = contents.split('\n')
 
     topLevelArray = []
