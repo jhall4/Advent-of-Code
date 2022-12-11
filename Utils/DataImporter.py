@@ -24,6 +24,16 @@ def GetNumbersFromString(string):
     return numbers
 
 
+def GetFileAsString(fileName):
+    path = GetPathOnDisk(fileName)
+    if(not exists(path)):
+        return ""
+    with open(path) as file:
+        contents = file.read()
+    return contents
+
+
+
 def GetCsvRowsAsArray(fileName):
     path = GetPathOnDisk(fileName)
     if(not exists(path)):
