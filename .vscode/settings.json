@@ -5,5 +5,14 @@
     "python.analysis.extraPaths": [
         "./Code"
     ],
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "pylint.args": [
+        "--disable=C0114",
+        "--disable=C0116",
+        "--max-line-length=150",
+        "--disable=consider-using-enumerate"
+    ]
 }
